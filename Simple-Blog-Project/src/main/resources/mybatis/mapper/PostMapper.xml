@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.codepresso.blog.repository.PostRepository">
+    <select id="getAllPost" resultType="com.codepresso.blog.vo.Post">
+        SELECT * FROM post;
+    </select>
+
+    <insert id="save">
+        INSERT INTO post(user_name, title, post_content) VALUES (#{post.userName}, #{post.title}, #{post.postContent});
+    </insert>
+
+    <select id="getPost" resultType="com.codepresso.blog.vo.Post">
+        SELECT * FROM post WHERE id = ${id};
+    </select>
+
+    <update id="modifyPost">
+       UPDATE post set title=#{post.title},post_content=#{post.postContent} where id = #{post.id};
+    </update>
+
+    <select id="deletePost">
+        DELETE FROM post WHERE id = ${id}
+    </select>
+</mapper>
